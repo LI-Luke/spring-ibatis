@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+	<context id="SupplierTables" targetRuntime="MyBatis3">
+	
+		<property name="xmlFormatter" value="com.github.dumars.mybatis.generator.ext.formatter.SimpleXmlFormatter"/>
+		
+		<!-- <plugin type="com.github.dumars.mybatis.generator.ext.plugin.NoExamplePlugin"/> -->
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+
+		<plugin type="com.github.dcendents.mybatis.generator.plugin.subpackage.CreateSubPackagePlugin">
+			<property name="modelSubPackage" value="gen" />
+		    <property name="modelClassSuffix" value="Gen" />
+		    <property name="mapperSubPackage" value="gen" />
+		    <property name="mapperClassSuffix" value="Gen" />
+			<property name="exampleSubPackage" value="criterion" />
+		</plugin>
+		<plugin type="com.github.dcendents.mybatis.generator.plugin.rename.RenameExampleClassAndMethodsPlugin">
+			<property name="classMethodSearchString" value="Example" />
+			<property name="classMethodReplaceString" value="Criterion" />
+			<property name="parameterSearchString" value="example" />
+			<property name="parameterReplaceString" value="criterion" />
+		</plugin>
+		<plugin type="com.github.dcendents.mybatis.generator.plugin.annotation.AddClassAnnotationsPlugin">
+			<property name="annotationClass" value="lombok.ToString" />
+			<property name="annotationString" value="@ToString(callSuper = true)" />
+		</plugin>
+
+		<commentGenerator type="com.github.dumars.mybatis.generator.ext.plugin.CustomsCommentGenerator">
+			<property name="suppressAllComments" value="false" />
+			<property name="suppressDate" value="true" />
+			<property name="suppressClassComment" value="false" />
+			<property name="showColumnName" value="true" />
+			<property name="showColumnJdbcType" value="true" />
+			<property name="showColumnDefaultValue" value="true" />
+			<property name="showColumnRemark" value="true" />
+		</commentGenerator>
+		
+		<jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+			connectionURL="jdbc:sqlserver://localhost:1433;DatabaseName=test" userId="sa"
+			password="P@ssw0rd">
+		</jdbcConnection>
+
+		<javaModelGenerator targetPackage="tw.com.luke.entity" targetProject="src/main/java/">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+			<property name="constructorBased" value="false"/>
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="tw.com.luke.mapper" targetProject="src/main/resources/">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		
+		<javaClientGenerator targetPackage="tw.com.luke.mapper" type="MIXEDMAPPER" targetProject="src/main/java/">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		<!-- table list -->
+		<table tableName="student" domainObjectName="Student" delimitIdentifiers="true" delimitAllColumns="true"/>
+	</context>
+</generatorConfiguration>
