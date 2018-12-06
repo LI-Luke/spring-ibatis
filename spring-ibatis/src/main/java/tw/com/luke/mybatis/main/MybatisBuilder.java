@@ -14,7 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class BisBuilder {
+public class MybatisBuilder {
 	private static final Logger log = LoggerFactory.getLogger(BisBuilder.class);
 	public static void main(String[] args) {
 		try {
