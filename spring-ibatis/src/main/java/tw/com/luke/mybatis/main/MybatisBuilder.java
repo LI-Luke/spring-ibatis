@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 
 public class MybatisBuilder {
-	private static final Logger log = LoggerFactory.getLogger(BisBuilder.class);
+	private static final Logger log = LoggerFactory.getLogger(MybatisBuilder.class);
 	public static void main(String[] args) {
 		try {
 			File xmlSource = new File("src/main/resources/tw/com/senao/ec/mapper/bis");
